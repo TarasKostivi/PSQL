@@ -1,0 +1,71 @@
+CREATE DATABASE library;
+\c library
+CREATE TABLE books(
+id SERIAL NOT NULL PRIMARY KEY,
+book_name VARCHAR(120) NOT NULL,
+description text,
+date_of_publication DATE NOT NULL DEFAULT '2018-01-01',
+category VARCHAR(30) NOT NULL,
+isbn VARCHAR(20) NOT NULL UNIQUE,
+number_of_pages INT NOT NULL,
+author_name VARCHAR(45) NOT NULL,
+author_surname VARCHAR(45) NOT NULL,
+author_email VARCHAR(50) NOT NULL UNIQUE,
+author_age INT NOT NULL,
+date_of_bird DATE NOT NULL,
+author_medal VARCHAR(120) NULL);
+
+INSERT INTO books
+(book_name, description, date_of_publication, category, isbn, number_of_pages, author_name, author_surname, author_email, author_age, date_of_bird, author_medal)
+VALUES
+('Aristokrat','some title','1999-09-04','humor','23-233-43034',130,'Alex','Wolker','alexL@gmail.com',34,'1998-07-07',NULL),
+('Aristotel','autobiograph','2007-12-23','histori','58-454-35363',237,'Karnel','Darges','karnelDag@gmail',23,'1990-09-20','Nauke historu'),
+('Scrappu Little','littel mouse','2001-09-30','humor','98-9034-9955',500,'Anna','Kendrik','anna@gmail.com',67,'1938-09-12','Brony medal'),
+('The Wither','Man and Drakons','2010-03-02','fantasy','34-0984-7382',123,'Orest','Wiltch','orestW@gmail.com',48,'1972-08-06',NULL),
+('Maska','Maska Club','2020-08-06','humor','45-3092-3447',323,'Anistor','Clovlend','adsClo@gmail.com',34,'1986-12-16','Incler'),
+('Papies','Bad litel girl','1997-02-17','humor','12-6541-9065',120,'Inna','Calter','innaCa@gmail.com',60,'2006-08-09','gold autensuio');
+('Kill my Dogs','Men and her dog','2006-02-04','humor','22-1146-6742',121,'Copel','Brayn','sdfs@gmail.com',80,'1960-07-08','Nice books 20011');
+('Love','Man and Woomen history','2020-03-02','drama','72-4146-6242',109,'Greg','Plit','gpsd48@gmail.com',50,'1970-04-08','grean medal');
+('Java','Clear code','2001-09-08','stadu','59-3456-3763',347,'Bob','Martin','bob433@gmail.com',40,'1980-03-05','Code nice');
+('Cant','autobiography Cant','1998-05-06','autobiographu','42-2196-6142',111,'IVan','Copt','idfdv2@gmail.com',30,'1990-08-08',NULL);
+
+SELECT * FROM books;
+SELECT * FROM books WHERE id = 5 OR id = 10 OR id = 15;
+SELECT * FROM books WHERE number_of_pages > 150;
+SELECT * FROM books WHERE author_age > 30;
+SELECT * FROM books WHERE author_medal IS NULL;
+SELECT * FROM books WHERE author_email ='alexL@gmail.com';
+SELECT * FROM books WHERE isbn ='45-3092-3447';
+SELECT book_name, category FROM books;
+SELECT * FROM books WHERE number_of_pages > 200 AND author_age > 25;
+SELECT * FROM books WHERE category = 'humor' OR category = 'drama';
+SELECT * FROM books ORDER BY book_name;
+SELECT * FROM books ORDER BY author_email;
+SELECT * FROM books ORDER BY number_of_pages DESC;
+SELECT DISTINCT category FROM books;
+SELECT DISTINCT author_name FROM books;
+SELECT * FROM books WHERE date_of_publication > '2010-01-01';
+SELECT * FROM books WHERE date_of_publication < '2010-01-01';
+
+
+витягнути всі книги
+- витягнути книги з id 5, 10, 13
+- витягнути всі книги де кількість сторінок більше 150
+- витягнути книги, де автори старше 30 років
+- витягнути книги, в яких автори не мають нагород
+- витягнути книгу по email автора
+- витягнути книгу по isbn
+- витягнути всіх книги які належать до певної категорії
+- витягнути книги в яких кількість сторінок більше 200 та вік автора більше 25
+- витягнути книги, в яких категорія "комедія" або "драма"(назви категорії можете змінити)
+- витягнути книги та посортувати за назвою
+- витягнути книги та посортувати за email автора
+- витягнути книги та посортувати за кількістю сторінок(проти алфавіту)
+- витягнути унікальні значення категорій
+- витягнути унікальні імена авторів
+- витягнути книги які було написано після '2000-01-01'
+- витягнути книги які було написано до '2010-01-01'
+
+
+
+
